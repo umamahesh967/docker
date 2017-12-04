@@ -81,7 +81,7 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
 # use docker without sudo
 USER root
-RUN gpasswd -a ${user} docker && docker run hello-world
+RUN gpasswd -a ${user} docker
 
 USER ${user}
 
