@@ -2,8 +2,8 @@ FROM openjdk:8-jdk
 
 RUN apt-get update && apt-get install -y git curl && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/ansible/ansible.git && cd ./ansible && make rpm && rpm -Uvh ./rpm-build/ansible-*.noarch.rpm
-
+#RUN git clone https://github.com/ansible/ansible.git && cd ./ansible && make rpm && rpm -Uvh ./rpm-build/ansible-*.noarch.rpm
+RUN apt-get install ansible
 RUN git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
