@@ -8,8 +8,8 @@ RUN apt-get dist-upgrade -y
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-software-properties
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+#RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-software-properties
+#RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 
 RUN  apt-get install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get install ansible
 RUN git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
