@@ -13,6 +13,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 
 #RUN  apt-get install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get install ansible
 RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
+
+USER root
+RUN groupadd docker && gpasswd -a ${USER} docker && docker run hello-world
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #RUN apt-get update && apt-cache policy docker-ce && apt-get install -y docker-ce && systemctl status docker
