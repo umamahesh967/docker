@@ -89,7 +89,7 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 #RUN gpasswd -a ${USER} docker
 ##RUN gpasswd -a root docker # RUN systemctl restart docker
 # RUN docker run hello-world
-RUN groupadd docker
+#RUN groupadd docker
 RUN usermod -aG docker $USER
 RUN service docker restart
 
