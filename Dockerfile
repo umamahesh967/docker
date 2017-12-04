@@ -3,6 +3,13 @@ FROM openjdk:8-jdk
 RUN apt-get update && apt-get install -y git curl && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 
 #RUN git clone https://github.com/ansible/ansible.git && cd ./ansible && make rpm && rpm -Uvh ./rpm-build/ansible-*.noarch.rpm
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-software-properties
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+
 RUN  apt-get install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get install ansible
 RUN git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
