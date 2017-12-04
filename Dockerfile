@@ -86,7 +86,7 @@ RUN gpasswd -a ${user} docker
 RUN service docker start 
 RUN newgrp docker
 RUN gpasswd -a root docker # RUN systemctl restart docker
-RUN docker run hello-world
+# RUN docker run hello-world
 
 #USER ${user}
 
