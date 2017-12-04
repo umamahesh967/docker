@@ -83,6 +83,7 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 USER root
 RUN gpasswd -a ${user} docker
 RUN service docker start 
+RUN newgrp docker
 RUN docker run hello-world
 
 USER ${user}
