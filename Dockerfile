@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 #RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 
 #RUN  apt-get install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get install ansible
-RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
+##RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
 
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -89,6 +89,14 @@ USER root
 #RUN gpasswd -a ${USER} docker
 ##RUN gpasswd -a root docker # RUN systemctl restart docker
 # RUN docker run hello-world
+RUN docker run docker/compose:1.13.0 version
+RUN docker run \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v "$PWD:/rootfs/$PWD" \
+    -w="/rootfs/$PWD" \
+    docker/compose:1.13.0 up
+    
+RUN source ~/.bashrc
 
 RUN service docker restart 
 
