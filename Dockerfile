@@ -81,7 +81,7 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
 # use docker without sudo
 USER root
-RUN usermod -aG docker ${USER}
+RUN sudo usermod -aG docker ${USER}
 # RUN gpasswd -a ${USER} docker
 RUN service docker start 
 RUN newgrp docker
