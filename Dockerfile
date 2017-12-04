@@ -82,10 +82,11 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 # use docker without sudo
 USER root
 #RUN sudo usermod -aG docker ${USER}
+RUN usermod -g docker jenkins
 # RUN gpasswd -a ${USER} docker
 RUN service docker start 
 RUN newgrp docker
-RUN gpasswd -a ${USER} docker
+#RUN gpasswd -a ${USER} docker
 RUN gpasswd -a root docker # RUN systemctl restart docker
 # RUN docker run hello-world
 
