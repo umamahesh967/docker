@@ -87,7 +87,7 @@ RUN newgrp docker
 RUN gpasswd -a root docker 
 RUN service docker restart
 #RUN systemctl restart docker
-RUN docker run hello-world
+#RUN docker run hello-world
 #CMD docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker ubuntu:latest bash
 
 #USER ${user}
