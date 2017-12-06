@@ -74,18 +74,19 @@ RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 # for main web interface:
 EXPOSE ${http_port}
 
+
 # will be used by attached slave agents:
 EXPOSE ${agent_port}
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
-RUN docker run -v /var/run/docker.sock:/var/run/docker.sock \
-           -ti docker
+#RUN docker run -v /var/run/docker.sock:/var/run/docker.sock \
+ #          -ti docker
 # use docker without sudo
 USER root
 ##RUN gpasswd -a ${user} docker
 # RUN gpasswd -a ${USER} docker 
 RUN newgrp docker
-RUN gpasswd -a root docker 
+RUN gpasswd -a docker root 
 RUN service docker restart
 #RUN systemctl restart docker
 #RUN docker run hello-world
