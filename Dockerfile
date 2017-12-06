@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 #RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 
 #RUN  apt-get install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get install ansible
-#RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
+RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
 
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -85,8 +85,8 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 USER root
 ##RUN gpasswd -a ${user} docker
 # RUN gpasswd -a ${USER} docker 
-#RUN newgrp docker
-RUN usermod -aG docker your_username
+RUN newgrp docker
+RUN usermod -aG docker jenkins
 #RUN gpasswd -a docker jenkins 
 RUN service docker restart
 #RUN systemctl restart docker
