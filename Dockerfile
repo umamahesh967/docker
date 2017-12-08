@@ -82,15 +82,15 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 #RUN docker run -v /var/run/docker.sock:/var/run/docker.sock \
  #          -ti docker
 # use docker without sudo
-USER root
+USER jenkins
 #RUN apt-get update && git clone https://github.com/stackroute/docker-setup && cd docker-setup && ./docker-setup.sh
 
 ##RUN gpasswd -a ${user} docker
 # RUN gpasswd -a ${USER} docker 
-RUN newgrp docker
-RUN usermod -aG docker jenkins
+#RUN newgrp docker
+#RUN usermod -aG docker jenkins
 #RUN gpasswd -a docker jenkins 
-RUN service docker restart
+#RUN service docker restart
 #RUN systemctl restart docker
 #RUN docker run hello-world
 #CMD docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker ubuntu:latest bash
